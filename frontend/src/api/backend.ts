@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000"; // Last me slash mat lagao
+const BASE_URL = "https://asecb.vercel.app"; // Last me slash mat lagao
 
 export const API = {
   BASE_URL,
