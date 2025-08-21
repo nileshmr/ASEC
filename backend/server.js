@@ -221,6 +221,7 @@ app.post('/api/contact', async (req, res) => {
     await contact.save();
     res.status(201).json({ message: 'Contact form submitted successfully' });
   } catch (err) {
+    console.error('Contact form error:', err); // detailed error logging
     res.status(500).json({ error: 'Failed to submit contact form' });
   }
 });
