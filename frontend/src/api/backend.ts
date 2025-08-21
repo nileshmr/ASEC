@@ -1,4 +1,4 @@
-const BASE_URL = "https://asecb.vercel.app/"; // Change this for deployment
+const BASE_URL = "https://asecb.vercel.app"; // Change this for deployment
 
 export const API = {
   BASE_URL,
