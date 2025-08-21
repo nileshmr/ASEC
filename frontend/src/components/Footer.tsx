@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import API from '../api/backend'; // Import centralized backend URLs
 // Remove lucide-react imports
 // import { GraduationCap, Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -34,7 +35,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/newsletter', { email: newsletterEmail });
+      const { data } = await axios.post(API.NEWSLETTER, { email: newsletterEmail });
       setPopupMsg(data.message || 'Subscribed successfully.');
       setPopupVisible(true);
       setNewsletterEmail('');

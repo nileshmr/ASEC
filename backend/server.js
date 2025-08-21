@@ -136,7 +136,7 @@ app.post('/api/register', async (req, res) => {
 
           <!-- CTA -->
           <div style="text-align:center; margin-top:28px;">
-            <a href="http://localhost:5173/" target="_blank"
+            <a href="https://asecedu.vercel.app/" target="_blank"
                style="background:#1a73e8; color:#fff; padding:12px 24px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:15px; display:inline-block; box-shadow:0 2px 6px rgba(0,0,0,0.15);">
               View Admission Portal
             </a>
@@ -169,7 +169,7 @@ Roll Number: ${rollNumber}
 Course: ${String(course).toUpperCase()}
 Category: ${category}
 
-You can now visit the Admission Portal for next steps: http://localhost:5173/
+You can now visit the Admission Portal for next steps: https://asecedu.vercel.app/
 
 Regards,
 ASEC Admissions Office

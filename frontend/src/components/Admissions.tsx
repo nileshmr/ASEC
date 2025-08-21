@@ -1,6 +1,7 @@
 // frontend/Admission.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
+import API from '../api/backend';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendarAlt,
@@ -52,7 +53,7 @@ const Admissions: React.FC = () => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/register', formData);
+      const { data } = await axios.post(API.REGISTER, formData);
       setAssignedRoll(data?.rollNumber || null);
       setPopupVisible(true);
       setShowPopup(true);
