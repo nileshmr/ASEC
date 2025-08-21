@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import axios from 'axios';
+import API from '../api/backend';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
