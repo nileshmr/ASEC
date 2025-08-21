@@ -47,7 +47,12 @@ const Newsletter = mongoose.model('Newsletter', newsletterSchema);
 
 // Express App Setup 
 const app = express();
-app.use(cors());
+// Allow CORS from deployed frontend
+app.use(cors({
+  origin: ['https://asecedu.vercel.app'],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 // Roll Number Generator 
