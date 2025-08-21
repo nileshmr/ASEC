@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post(`${API.BASE_URL}/api/contact`, formData);
       setSuccessMsg('Thank you for reaching out! We will contact you soon.');
       // Reset form
       setFormData({
