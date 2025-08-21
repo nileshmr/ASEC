@@ -218,6 +218,8 @@ Email: admissions@asec.edu | Phone: +91-9876543210
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
   try {
+    // Log incoming request body for debugging
+    console.log('Contact POST body:', req.body);
     const { name, email, phone, subject, message } = req.body;
     if (!name || !email || !subject || !message) {
       return res.status(400).json({ error: 'Missing required fields' });
@@ -226,6 +228,10 @@ app.post('/api/contact', async (req, res) => {
     await contact.save();
     res.status(201).json({ message: 'Contact form submitted successfully' });
   } catch (err) {
+    console.error('Contact form error:', err);
+    if (err && err.stack) {
+      console.error('Contact form error stack:', err.stack);
+    }
     console.error('Contact form error:', err); // detailed error logging
     res.status(500).json({ error: 'Failed to submit contact form' });
   }
