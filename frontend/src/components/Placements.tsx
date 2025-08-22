@@ -58,6 +58,21 @@ const Placements: React.FC = () => {
     }
   ];
 
+  const companyLogos: Record<string, string> = {
+    Microsoft: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    Google: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+    Amazon: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+    Infosys: "https://www.liblogo.com/img-logo/in6145i7cd-infosys-logo-infosys-logo-ai-openchain.png",
+    TCS: "https://tse2.mm.bing.net/th/id/OIP.jelNQlhvt5JOQeR1nyWL1gAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    Wipro: "https://i.pinimg.com/originals/03/1a/b1/031ab1329da9a72190cacb119eed906a.png",
+    IBM: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+    Accenture: "https://cdn.freelogovectors.net/wp-content/uploads/2023/05/accenture_logo-freelogovectors.net_.png",
+    Deloitte: "https://companieslogo.com/img/orig/deloitte-d98ace3a.png?t=1699425248",
+    Cognizant: "https://pridelogo.com/brands/Cognizant/Cognizant.png",
+    HCL: "https://e7.pngegg.com/pngimages/355/249/png-clipart-hcl-technologies-hcl-enterprise-information-technology-hcl-poland-sp-z-o-o-service-business-blue-text.png",
+    "Tech Mahindra": "https://tse1.mm.bing.net/th/id/OIP.Jc4ESR1mVLO_t1Yt_taYQgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  };
+
   const getColorClasses = (color: string) => {
     const colors = {
       green: { bg: 'bg-green-100', text: 'text-green-600', icon: 'bg-green-500' },
@@ -108,8 +123,16 @@ const Placements: React.FC = () => {
             {companies.map((company, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center"
+                className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center justify-center"
               >
+                {companyLogos[company] ? (
+                  <img
+                    src={companyLogos[company]}
+                    alt={company}
+                    className="h-8 mb-3 object-contain"
+                    style={{ maxWidth: '90px' }}
+                  />
+                ) : null}
                 <span className="font-semibold text-gray-700 text-center">{company}</span>
               </div>
             ))}

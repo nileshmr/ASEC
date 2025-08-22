@@ -243,12 +243,18 @@ const Contact: React.FC = () => {
         {/* Google Maps */}
         <div className="mt-16">
           <div className="bg-white rounded-2xl p-4 shadow-sm">
-            <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">Interactive Map</p>
-                <p className="text-sm text-gray-500">ASEC Campus Location</p>
-              </div>
+            <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+              <iframe
+                title="ASEC Campus Location"
+                src="https://www.google.com/maps?q=Pirelahibagh,+Ward+Number+16,+Daudnagar,+Aurangabad,+Bihar&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full rounded-lg"
+              ></iframe>
             </div>
           </div>
         </div>

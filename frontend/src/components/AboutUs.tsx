@@ -28,13 +28,18 @@ const AboutUs: React.FC = () => {
                 With state-of-the-art infrastructure, experienced faculty, and industry partnerships, we continue to evolve and adapt to the changing needs of the engineering profession.
               </p>
             </div>
-            <div className="relative">
+            <div className="relative group">
               <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl p-8 h-96 flex items-center justify-center">
                 <img 
                   src="https://images.pexels.com/photos/159490/yale-university-landscape-universities-schools-159490.jpeg?auto=compress&cs=tinysrgb&w=800" 
                   alt="ASEC Campus" 
-                  className="rounded-xl shadow-lg w-full h-full object-cover"
+                  className="rounded-xl shadow-lg w-full h-full object-cover transition-all duration-500 group-hover:rotate-2 group-hover:border-4 group-hover:border-blue-400"
                 />
+                <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+                  <span className="mb-6 px-6 py-2 bg-blue-600 text-white text-lg font-semibold rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-lg">
+                    Welcome to ASEC Campus
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -78,7 +83,7 @@ const AboutUs: React.FC = () => {
           <div className="grid lg:grid-cols-3 gap-8 items-center">
             <div className="text-center">
               <img 
-                src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                src="https://i.ytimg.com/vi/ppgScnmk-Dc/maxresdefault.jpg" 
                 alt="Principal" 
                 className="w-48 h-48 rounded-full mx-auto mb-4 object-cover"
               />

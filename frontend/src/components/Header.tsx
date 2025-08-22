@@ -96,39 +96,42 @@ const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="relative w-[90vw] max-w-xs bg-white/80 backdrop-blur-lg rounded-2xl shadow-2xl p-6 flex flex-col items-center border border-blue-100">
-              {/* Close Button */}
-              <button
-                className="absolute top-4 right-4 bg-blue-600 text-white rounded-full p-2 shadow hover:bg-blue-700 transition"
-                onClick={() => setIsMenuOpen(false)}
-                aria-label="Close menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
-              {/* Logo */}
-              <div className="flex flex-col items-center mb-8 mt-2">
-                <div className="bg-blue-600 p-3 rounded-full shadow">
-                  <GraduationCap className="w-8 h-8 text-white" />
+          <div className="fixed inset-0 z-50 bg-black/40">
+            {/* Slide-down mobile menu */}
+            <div className="absolute top-0 left-0 w-full pt-20 px-4">
+              <div className="relative bg-white/90 backdrop-blur-lg rounded-b-2xl shadow-2xl p-6 flex flex-col items-center border border-blue-100">
+                {/* Close Button */}
+                <button
+                  className="absolute top-4 right-4 bg-blue-600 text-white rounded-full p-2 shadow hover:bg-blue-700 transition"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+                {/* Logo */}
+                <div className="flex flex-col items-center mb-8 mt-2">
+                  <div className="bg-blue-600 p-3 rounded-full shadow">
+                    <GraduationCap className="w-8 h-8 text-white" />
+                  </div>
+                  <h1 className="text-2xl font-bold text-blue-700 mt-2">ASEC</h1>
                 </div>
-                <h1 className="text-2xl font-bold text-blue-700 mt-2">ASEC</h1>
+                {/* Navigation Items */}
+                <nav className="w-full flex flex-col items-center space-y-4 mt-2 mb-6">
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`w-full text-left text-lg font-semibold px-4 py-2 rounded-lg transition-colors ${
+                        activeSection === item.id
+                          ? 'bg-blue-100 text-blue-700'
+                          : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </nav>
               </div>
-              {/* Navigation Items */}
-              <nav className="w-full flex flex-col items-center space-y-4 mt-2 mb-6">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => handleNavClick(item.id)}
-                    className={`w-full text-left text-lg font-semibold px-4 py-2 rounded-lg transition-colors ${
-                      activeSection === item.id
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </nav>
             </div>
           </div>
         )}
