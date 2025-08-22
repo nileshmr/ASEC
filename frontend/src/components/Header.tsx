@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, GraduationCap } from 'lucide-react';
 
 interface HeaderProps {
@@ -8,6 +8,14 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Auto-close hamburger menu on scroll
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const handleScroll = () => setIsMenuOpen(false);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMenuOpen]);
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -88,26 +96,40 @@ const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className={`lg:hidden py-4 ${activeSection === 'home' ? 'bg-black/40' : ''} border-t border-gray-200`}>
-            <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`text-left text-sm font-medium transition-colors duration-200 ${
-                    activeSection === 'home'
-                      ? `hover:text-orange-400 ${activeSection === item.id ? 'text-orange-400' : 'text-white'}`
-                      : `hover:text-blue-700 ${activeSection === item.id ? 'text-blue-700' : 'text-gray-600'}`
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-              {/* Campus Life, Faculty, News & Events buttons commented out */}
-              {/* <button>Campus Life</button> */}
-              {/* <button>Faculty</button> */}
-              {/* <button>News & Events</button> */}
-            </nav>
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+            <div className="relative w-[90vw] max-w-xs bg-white/80 backdrop-blur-lg rounded-2xl shadow-2xl p-6 flex flex-col items-center border border-blue-100">
+              {/* Close Button */}
+              <button
+                className="absolute top-4 right-4 bg-blue-600 text-white rounded-full p-2 shadow hover:bg-blue-700 transition"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              {/* Logo */}
+              <div className="flex flex-col items-center mb-8 mt-2">
+                <div className="bg-blue-600 p-3 rounded-full shadow">
+                  <GraduationCap className="w-8 h-8 text-white" />
+                </div>
+                <h1 className="text-2xl font-bold text-blue-700 mt-2">ASEC</h1>
+              </div>
+              {/* Navigation Items */}
+              <nav className="w-full flex flex-col items-center space-y-4 mt-2 mb-6">
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNavClick(item.id)}
+                    className={`w-full text-left text-lg font-semibold px-4 py-2 rounded-lg transition-colors ${
+                      activeSection === item.id
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </nav>
+            </div>
           </div>
         )}
       </div>
